@@ -35,7 +35,9 @@ std::unique_ptr<tflite::Profiler> MaybeCreatePlatformProfiler() {
 #if defined(__ANDROID__)
   return MaybeCreateATraceProfiler();
 #elif defined(SIGNPOST_PLATFORM_PROFILER)
-  return MaybeCreateSignpostProfiler();
+  // WORKAROUND: Temporary change added to get iOS builds working
+  //return MaybeCreateSignpostProfiler();
+  return nullptr;
 #else
   return nullptr;
 #endif
