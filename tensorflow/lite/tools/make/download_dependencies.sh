@@ -34,26 +34,26 @@ if [ ! -f $BZL_FILE_PATH ]; then
 fi
 
 EIGEN_WORKSPACE_BZL_PATH="third_party/eigen3/workspace.bzl"
-EIGEN_COMMIT="$(grep -oP 'EIGEN_COMMIT = "\K[0-9a-f]{40}' "${EIGEN_WORKSPACE_BZL_PATH}")"
+EIGEN_COMMIT=$( perl -ne 'if (/EIGEN_COMMIT = "([0-9a-f]{40})/) { print $1 . "\n" }' ${EIGEN_WORKSPACE_BZL_PATH} )
 EIGEN_URL="https://gitlab.com/libeigen/eigen/-/archive/"${EIGEN_COMMIT}"/eigen-"${EIGEN_COMMIT}".tar.gz"
-EIGEN_SHA="$(grep -oP 'EIGEN_SHA256 = "\K[0-9a-f]{64}' "${EIGEN_WORKSPACE_BZL_PATH}")"
+EIGEN_SHA=$( perl -ne 'if (/EIGEN_SHA256 = "([0-9a-f]{64})/) { print $1 . "\n" }' ${EIGEN_WORKSPACE_BZL_PATH} )
 GEMMLOWP_WORKSPACE_BZL_PATH="third_party/gemmlowp/workspace.bzl"
-GEMMLOWP_COMMIT="$(grep -oP 'GEMMLOWP_COMMIT = "\K[0-9a-f]{40}' "${GEMMLOWP_WORKSPACE_BZL_PATH}")"
+GEMMLOWP_COMMIT=$( perl -ne 'if (/GEMMLOWP_COMMIT = "([0-9a-f]{40})/) { print $1 . "\n" }' ${GEMMLOWP_WORKSPACE_BZL_PATH} )
 GEMMLOWP_URL="https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/gemmlowp/archive/"${GEMMLOWP_COMMIT}".zip"
-GEMMLOWP_SHA="$(grep -oP 'GEMMLOWP_SHA256 = "\K[0-9a-f]{64}' "${GEMMLOWP_WORKSPACE_BZL_PATH}")"
+GEMMLOWP_SHA=$( perl -ne 'if (/GEMMLOWP_SHA256 = "([0-9a-f]{64})/) { print $1 . "\n" }' ${GEMMLOWP_WORKSPACE_BZL_PATH} )
 RUY_URL="https://github.com/google/ruy/archive/54774a7a2cf85963777289193629d4bd42de4a59.zip"
 RUY_SHA="da5ec0cc07472bdb21589b0b51c8f3d7f75d2ed6230b794912adf213838d289a"
 GOOGLETEST_URL="https://github.com/google/googletest/archive/release-1.8.0.tar.gz"
 GOOGLETEST_SHA="58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8"
 ABSL_WORKSPACE_BZL_PATH="third_party/absl/workspace.bzl"
-ABSL_COMMIT="$(grep -oP 'ABSL_COMMIT = "\K[0-9a-f]{40}' "${ABSL_WORKSPACE_BZL_PATH}")"
+ABSL_COMMIT=$( perl -ne 'if (/ABSL_COMMIT = "([0-9a-f]{40})/) { print $1 . "\n" }' ${ABSL_WORKSPACE_BZL_PATH} )
 ABSL_URL="https://storage.googleapis.com/mirror.tensorflow.org/github.com/abseil/abseil-cpp/archive/"${ABSL_COMMIT}".tar.gz"
-ABSL_SHA="$(grep -oP 'ABSL_SHA256 = "\K[0-9a-f]{64}' "${ABSL_WORKSPACE_BZL_PATH}")"
+ABSL_SHA=$( perl -ne 'if (/ABSL_SHA256 = "([0-9a-f]{64})/) { print $1 . "\n" }' ${ABSL_WORKSPACE_BZL_PATH} )
 NEON_2_SSE_URL="https://github.com/intel/ARM_NEON_2_x86_SSE/archive/master.zip"
 FARMHASH_WORKSPACE_BZL_PATH="third_party/farmhash/workspace.bzl"
-FARMHASH_COMMIT="$(grep -oP 'FARMHASH_COMMIT = "\K[0-9a-f]{40}' "${FARMHASH_WORKSPACE_BZL_PATH}")"
+FARMHASH_COMMIT=$( perl -ne 'if (/FARMHASH_COMMIT = "([0-9a-f]{40})/) { print $1 . "\n" }' ${FARMHASH_WORKSPACE_BZL_PATH} )
 FARMHASH_URL="https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/farmhash/archive/"${FARMHASH_COMMIT}".tar.gz"
-FARMHASH_SHA="$(grep -oP 'FARMHASH_SHA256 = "\K[0-9a-f]{64}' "${FARMHASH_WORKSPACE_BZL_PATH}")"
+FARMHASH_SHA=$( perl -ne 'if (/FARMHASH_SHA256 = "([0-9a-f]{64})/) { print $1 . "\n" }' ${FARMHASH_WORKSPACE_BZL_PATH} )
 FLATBUFFERS_URL="https://github.com/google/flatbuffers/archive/v1.12.0.tar.gz"
 FLATBUFFERS_SHA="62f2223fb9181d1d6338451375628975775f7522185266cd5296571ac152bc45"
 FFT2D_URL="https://storage.googleapis.com/mirror.tensorflow.org/www.kurims.kyoto-u.ac.jp/~ooura/fft2d.tgz"
